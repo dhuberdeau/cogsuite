@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Numbers exercise</title>
+        <link href="styles/style.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dsp.js/dist/dsp.min.js"></script>
+        <script
+            src="/home/linux2/Projects/incubator-flagon-useralejs/build/userale-2.3.0.min.js"
+            data-url="http://localhost:8000/"
+            data-user="example-user"
+            data-log-details="true"
+            data-version="2.3.0"
+            data-tool="Apache UserALE.js Example"
+            data-threshold="1"
+            data-interval="100"
+            data-resolution="1"
+        ></script>
+    </head>
+    <body>
+        <h1>Choose a primary task</h1>
+        <select id="T1-selection" onchange="showContent()">
+            <option value="default" selected>Select one</option>
+            <option value="number-game">Number game</option>
+            <option value="n-back-task">N-back task</option>
+        </select>
+        <div id="number-game" style="display:none">
+            <h2>Number selection exercise.</h2>
+            <p>
+                In this game, you must guess which number from 1 to 100 
+                I have drawn randomly. You have 10 tries to guess, and 
+                after each guess, I will tell you whether you guessed 
+                the number or if your guess was too high or too low.
+            </p>
+            <div class="resultParas">
+                <p class="guesses"></p>
+                <p class="lastResult"></p>
+                <p class="lowOrHi"></p>
+            </div>
+            <label for="guessField">Enter a guess: </label>
+            <input type="number" id="guessField" class="guessField" />
+            <input type="submit" value="Submit guess" class="guessSubmit" /> 
+        </div>
+        <div id="n-back-task" style="display:none">
+            <h2>N-back task.</h2>
+            <p>
+                Pay attention to the numbers streaming below. When the same
+                number is presented with a delay of N = 2, click the button below.  
+            </p>
+            <h2 id="n-back-number">0</h2>
+            <h1>Rhythm keeping exercise.</h1>
+            <div class="chart-container" style="position: relative;     height:15vh; width:50vw">
+                <canvas id="tapTime-chart"></canvas>
+            </div>
+        </div>
+
+        <h1>Rhythm keeping exercise.</h1>
+        <div class="chart-container" style="position: relative;     height:15vh; width:50vw">
+            <canvas id="tapTime-chart"></canvas>
+        </div>
+        <div id="plot"></div>
+
+        <!-- <h1>Number selection exercise.</h1> -->
+        <!-- <img src="images/numbers-image.png" alt="My Image" height="150"/> -->
+        
+        
+        <!-- <p>
+            In this game, you must guess which number from 1 to 100 
+            I have drawn randomly. You have 10 tries to guess, and 
+            after each guess, I will tell you whether you guessed 
+            the number or if your guess was too high or too low.
+        </p>
+        <div class="resultParas">
+            <p class="guesses"></p>
+            <p class="lastResult"></p>
+            <p class="lowOrHi"></p>
+        </div>
+        <label for="guessField">Enter a guess: </label>
+        <input type="number" id="guessField" class="guessField" />
+        <input type="submit" value="Submit guess" class="guessSubmit" />  -->
+        
+        
+        <!-- <h1>Image memorization exercise.</h1>
+        <p>
+            When an image appears below, memorize the image. You will be
+            asked to identify it later.  
+        </p> -->
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11790.746406695793!2d-71.109201!3d42.37051785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1677294553467!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        <!-- <h1>Mapping exercise.</h1>
+        <iframe id = "map-frame" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-84.44263458251953%2C38.86898356409659%2C-84.25243377685547%2C38.98916912512044&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=13/38.9291/-84.3475">View Larger Map</a></small>
+        <img id="targetImage" src="images/hammer.png" style="display:none; position:absolute; top:400px; right:50px"> -->
+        
+        <!-- <h1>N-back task.</h1>
+        <p>
+            Pay attention to the numbers streaming below. When the same
+            number is presented with a delay of N = 2, click the button below.  
+        </p>
+        <h2 id="n-back-number">0</h2>
+        <h1>Rhythm keeping exercise.</h1>
+        <div class="chart-container" style="position: relative;     height:15vh; width:50vw">
+            <canvas id="tapTime-chart"></canvas>
+        </div> -->
+
+        <script src="scripts/main.js"></script>
+    </body>
+    <!-- <script src="scripts/ploter.js"></script> -->
+</html>

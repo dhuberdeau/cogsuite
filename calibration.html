@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Numbers exercise</title>
+        <link href="styles/style.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dsp.js/dist/dsp.min.js"></script>
+        <script
+            src="/home/linux2/Projects/incubator-flagon-useralejs/build/userale-2.3.0.min.js"
+            data-url="http://localhost:8000/"
+            data-user="example-user"
+            data-log-details="true"
+            data-version="2.3.0"
+            data-tool="Apache UserALE.js Example"
+            data-threshold="1"
+            data-interval="100"
+            data-resolution="1"
+        ></script>
+    </head>
+    <body onload="startFlashing()">
+        <h1>Choose a primary task</h1>
+        <select id="T1-selection" onchange="showContent()">
+            <option value="default" selected>Select one</option>
+            <option value="number-game">Number game</option>
+            <option value="n-back-task">N-back task</option>
+        </select>
+        <div id="number-game" style="display:none">
+            <h2>Number selection exercise.</h2>
+            <p>
+                In this game, you must guess which number from 1 to 100
+                I have drawn randomly. You have 10 tries to guess, and
+                after each guess, I will tell you whether you guessed
+                the number or if your guess was too high or too low.
+            </p>
+            <div class="resultParas">
+                <p class="guesses"></p>
+                <p class="lastResult"></p>
+                <p class="lowOrHi"></p>
+            </div>
+            <label for="guessField">Enter a guess: </label>
+            <input type="number" id="guessField" class="guessField" />
+            <input type="submit" value="Submit guess" class="guessSubmit" />
+        </div>
+        <div id="n-back-task" style="display:none">
+            <h2>N-back task.</h2>
+            <p>
+                Pay attention to the numbers streaming below. When the same
+                number is presented with a delay of N = 2, click the button below.
+            </p>
+            <h2 id="n-back-number">0</h2>
+            <input type="button" value="Match occured" onclick="increment()">
+        </div>
+
+        <h1>Rhythm keeping exercise.</h1>
+        <h2>Select a rhythm length.</h2>
+        <select id="T2-selection" onchange="specify_beat_sequence()">
+            <option value="default" selected>Select one</option>
+            <option value="length3">Length 3</option>
+            <option value="length4">Length 4</option>
+            <option value="length5">Length 5</option>
+            <option value="length6">Length 6</option>
+            <option value="length7">Length 7</option>
+        </select>
+
+        <div id="beat-sequence-display" style="display:none">
+            <h3>
+
+                Test.
+            </h3>
+
+        </div>
+
+        <div id="circle" style="width: 30px; height: 30px;
+          border-radius: 50%;
+          position: fixed;
+          bottom: 10%;"></div>
+
+        <button id="off_button" style="position: fixed;
+            bottom: 5%;">Toggle metronome</button>
+
+        <div class="chart-container" style="position: relative;
+             height:15vh; width:50vw; 
+             display:none">
+            <canvas id="tapTime-chart"></canvas>
+        </div>
+        <div id="plot"></div>
+
+        <script src="scripts/main_calibration.js"></script>
+
+    </body>
+    <!-- <script src="scripts/ploter.js"></script> -->
+</html>

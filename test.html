@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Embedded Map</title>
+    <script
+      src="/home/linux2/Projects/incubator-flagon-useralejs/build/userale-2.3.0.min.js"
+      data-url="http://localhost:8000/"
+      data-user="example-user"
+      data-log-details="true"
+      data-version="2.3.0"
+      data-tool="Apache UserALE.js Example"
+      data-threshold="1"
+      data-interval="100"
+      data-resolution="1"
+></script>
+  </head>
+  <body>
+    <h1>Embedded Map Example</h1>
+    <iframe id = "map-frame" width="825" height="650" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="file:///home/linux2/Projects/web-projects/cogsuite/test1.html" style="border: 1px solid black"</iframe>
+      
+    <!-- <link rel="import" href="https://www.openstreetmap.org/export/embed.html?bbox=-84.44263458251953%2C38.86898356409659%2C-84.25243377685547%2C38.98916912512044&amp;layer=mapnik"> -->
+      
+    <script>
+        
+        document.getElementById('map-frame').onload = function() {
+            alert('something!');
+            // const mapFrame = document.getElementById('map-frame');
+            this.addEventListener('keydown', function(event) {
+                window.parent.focus();
+                window.opener.alert('keydown!');
+            });
+        };
+        alert('nothing!');
+
+        // document.addEventListener('keydown', function(event){
+        //     alert('normal key down');
+        // });
+
+        // var mapFrame = document.getElementById('map-frame');
+        // mapFrame.contentWindow.document.addEventListener("onload", function(){
+        //     alert('loaded!')
+        //     addEventListener('keydown', function(){alert('!!')});
+        // })
+        // alert('nothing!')
+        
+        
+        // window.onload = function(){
+        //     // const mapFrame = document.getElementById('map-frame');
+        //     this.contentWindow.document.addEventListener('keydown', function(event) {
+        //     console.log('Keydown event triggered!');
+        //     console.log('Pressed key: ' + event.key);
+        //     alert('keydown!' + event.key)
+        //     });
+        // }
+      
+    //   document.getElementById('map-frame').onload = function() {
+    //     alert('something!');
+    //     // const mapFrame = document.getElementById('map-frame');
+    //     this.addEventListener('keydown', function(event) {
+    //         alert('keydown!' + event.key)
+    //     });
+    //   };
+    //   alert('nothing!');
+    </script>
+    <!-- <script>
+        const mapFrame = document.getElementById('map-frame');
+                mapFrame.contentWindow.document.addEventListener('keydown', function(event) {
+                console.log('Keydown event triggered!');
+                console.log('Pressed key: ' + event.key);
+                alert('keydown!' + event.key)
+                });
+      </script> -->
+  </body>
+</html>

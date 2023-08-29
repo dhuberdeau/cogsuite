@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Embedded Map</title>
+    <script
+      src="/home/linux2/Projects/incubator-flagon-useralejs/build/userale-2.3.0.min.js"
+      data-url="http://localhost:8000/"
+      data-user="example-user"
+      data-log-details="true"
+      data-version="2.3.0"
+      data-tool="Apache UserALE.js Example"
+      data-threshold="1"
+      data-interval="100"
+      data-resolution="1"
+></script>
+  </head>
+  <body>
+    <h1>Embedded Map Example</h1>
+    <iframe 
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-84.44263458251953%2C38.86898356409659%2C-84.25243377685547%2C38.98916912512044&amp;layer=mapnik" style="border: 1px solid black"
+      id = "map-frame" width="825" height="650" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"</iframe>
+
+    <script>
+      // const frame_window = document.getElementById('map-frame')
+      // frame_window.top.postMessage('reply', '*')
+      // window.onmessage = function(event){
+      //   if (event.data == 'reply') {
+      //     alert('reply!')
+      //   }
+      // }
+      alert('help!')
+    </script>
+
+    <script>
+      document.getElementById('map-frame').onload = function() {
+          alert('something!');
+          this.addEventListener('keydown', function(event) {
+              window.parent.focus();
+              window.opener.alert('keydown!');
+          });
+      };
+      alert('nothing!');
+
+    </script>
+  </body>
+</html>

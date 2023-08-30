@@ -7,24 +7,25 @@ from scipy.signal import welch
 FORMAT = pyaudio.paInt16  # Audio format (16-bit PCM)
 CHANNELS = 1             # Number of audio channels (1 for mono, 2 for stereo)
 RATE = 44100             # Sampling rate (samples per second)
-CHUNK = 1024             # Number of frames per buffer
+CHUNK = 7*1024             # Number of frames per buffer
 overlap = 0.5            # how much window overlap
 window_samples = int(0.1 * RATE) # how many samples
+window_size = 0.1 # Window size in seconds (100 ms)
 
 # Create a figure for plotting the PSD
 plt.figure(figsize=(8, 4))
 plt.ion()  # Turn on interactive mode for real-time updating of the plot
 
 # Function to update the PSD plot
-def update_psd_plot(signal):
+def update_psd_plot(freq, psd):
+# def update_psd_plot(psd):
     plt.clf()
-    # plt.semilogy(freqs, psd)
-    plt.plot(signal)
+    plt.plot(psd)
+    # plt.semilogy(freq, psd)
     plt.title('Power Spectral Density (PSD)')
     plt.xlabel('Frequency (Hz)')
     plt.ylabel('Power/Frequency (dB/Hz)')
     plt.grid(True)
-    plt.pause(.01)
     plt.pause(window_size)
 
 # Initialize PyAudio
@@ -49,13 +50,20 @@ try:
 
         # freqs, psd = welch(audio_array, RATE, nperseg=CHUNK, noverlap=int(overlap * CHUNK))
 
+        freqs, psd = welch(audio_array, RATE, nperseg=CHUNK)
+
+        # freqs = range(0,len(audio_array))
+        # psd = audio_array
+
+        update_psd_plot(freqs, psd)
+
         # Update the PSD plot
         # update_psd_plot(audio_array)  # Convert to dB
 
         # Process the audio data here (e.g., perform analysis or write to a file)
         # Example: print the maximum value of the audio samples
-        max_sample = np.max(audio_array)
-        print(f"Max Sample Value: {max_sample}")
+        # max_sample = np.max(psd)
+        # print(f"Max Sample Value: {max_sample}")
 
 except KeyboardInterrupt:
     print("Stopped by user.")
